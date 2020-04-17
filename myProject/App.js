@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function App() {
   const  [people, setPeople] = useState([
-    { name: 'Vaszja', key: 1 },
-    { name: 'Rozi', key: 2 },
-    { name: 'Pupucsek', key: 3 },
-    { name: 'Pintyoke', key: 4 },
-    { name: 'Hugyosjozsi', key: 5 },
-    { name: 'Topike', key: 6 },
+    { name: 'Vaszja', id: 1 },
+    { name: 'Rozi', id: 2 },
+    { name: 'Pupucsek', id: 3 },
+    { name: 'Pintyoke', id: 4 },
+    { name: 'Hugyosjozsi', id: 5 },
+    { name: 'Topike', id: 6 },
+    { name: 'Makekosz', id: 7 }
   ])
 
   return (
     <View style={styles.container}>
+      
+      <FlatList
+        //numColumns={2} => it creates a gridlike appearence 
+        keyExtractor={ item => item.id }
+        data={people}
+        renderItem={ ({ item }) => (
+          <Text style={styles.item} key={item.key}> {item.name} </Text>
+        )}
+      />
 
-      <ScrollView>
+      {/* <ScrollView>
         { people.map(item => (
             <View>
               <Text style={styles.item} key={item.key}> {item.name} </Text>
             </View>
           )) }
-      </ScrollView>
+      </ScrollView> */}
 
     </View>
   );
