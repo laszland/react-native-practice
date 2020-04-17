@@ -2,25 +2,22 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function App() {
-  const  [name, setName] = useState('Vaszja');
-  const [age, setAge] = useState(33);
+  const  [people, setPeople] = useState([
+    { name: 'Vaszja', key: 1 },
+    { name: 'Rozi', key: 2 },
+    { name: 'Pupucsek', key: 3 },
+    { name: 'Pintyoke', key: 4 },
+    { name: 'Hugyosjozsi', key: 5 },
+    { name: 'Topike', key: 6 },
+  ])
 
   return (
     <View style={styles.container}>
-      <Text>Enter name:</Text>
-      <TextInput 
-        //multiline // allows to add multiple line to the textinput e.g. like a blogpost
-        style={styles.input} 
-        placeholder='e.g. JohnDoe'
-        onChangeText={(val) => setName(val)}/>
-
-      <Text>Enter age:</Text>
-        <TextInput
-          keyboardType='numeric'
-          style={styles.input} 
-          placeholder='e.g. 55'
-          onChangeText={(val) => setAge(val)}/>
-      <Text>name: {name}, age: {age}</Text>
+      { people.map((item) => {
+        return (
+        <Text> {item.name} </Text>
+        );
+      })}
     </View>
   );
 }
@@ -29,8 +26,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 20
+    //alignItems: 'center',
+    //justifyContent: 'center',
   },
   buttonContainer: {
     marginTop: 20
