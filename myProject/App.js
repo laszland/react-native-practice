@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
+import AddTodo from './components/AddTodo'
 
 export default function App() {
  
@@ -23,6 +24,7 @@ export default function App() {
       <Header/>
       <View style={styles.content}>
         {/* TODO FORM */}
+        <AddTodo/>
         <View style={styles.list}>
           {/* ACTUAL FLATLIST */}
           <FlatList
